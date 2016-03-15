@@ -1,5 +1,7 @@
 <?php
 
+use Mockery\MockInterface;
+
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
     /**
@@ -21,5 +23,19 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
         $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
         return $app;
+    }
+
+    /**
+     * 初始化Mock物件
+     *
+     * @param string $className
+     * @return MockInterface
+     */
+    public function initMock(string $className) : MockInterface
+    {
+        $mock = Mockery::mock($className);
+        App::instance($className, $mock);
+
+        return $mock;
     }
 }
