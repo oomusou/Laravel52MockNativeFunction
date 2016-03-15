@@ -10,7 +10,7 @@ class PasswordGeneratorHelper
      * @param string $origin
      * @return string
      */
-    public function str_shuffle(string $origin) : string
+    public function str_shuffle(string $origin)
     {
         return str_shuffle($origin);
     }
